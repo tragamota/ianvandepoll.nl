@@ -1,7 +1,128 @@
 <template>
   <div class="content-container">
-    <h1>Ian van de Poll</h1>
-    <h2>Based in the Netherlands</h2>
-    <h3>Software engineer and Machine learning engineer</h3>
+    <div class="title-container">
+      <h1>Ian van de Poll</h1>
+      <h2>Based in the Netherlands</h2>
+      <h3>Software engineer and ML engineer</h3>
+    </div>
+
+    <picture>
+      <source type="image/webp" srcset="~/assets/images/portrait-min.webp" />
+      <img class="portrait" src="~/assets/images/portrait-min.png" />
+    </picture>
+
+    <div class="background-container">
+      <div class="background-gradient"></div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.portrait {
+  display: block;
+  position: absolute;
+
+  pointer-events: none;
+  user-select: none;
+
+  width: 70vh;
+
+  z-index: 10;
+
+  left: 10vw;
+  bottom: 0;
+}
+
+.title-container {
+  display: block;
+  position: absolute;
+
+  top: 10vh;
+  left: 10vh;
+
+  z-index: 100;
+}
+
+.title-container > h1 {
+  display: block;
+  position: relative;
+
+  color: #4271a0;
+  font-size: 5rem;
+}
+
+.title-container > h2 {
+  display: block;
+  position: relative;
+
+  color: #4271a0;
+  font-size: 1.5rem;
+}
+
+.title-container > h3 {
+  display: block;
+  position: relative;
+
+  color: #4271a0;
+
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.background-container {
+  display: block;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 45vh;
+  height: 45vh;
+}
+
+.background-gradient {
+  display: block;
+  position: absolute;
+
+  z-index: -100;
+
+  opacity: 1;
+  filter: blur(150px);
+
+  width: 100%;
+  height: 100%;
+
+  background-image: linear-gradient(#04b0ca, #0077be, #04b0ca);
+}
+
+@media screen and (min-width: 992px) {
+  .portrait {
+    width: 60vh;
+    left: 10vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .portrait {
+    width: 70vh;
+    left: 20vw;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .portrait {
+    width: 70vh;
+
+    left: 25vw;
+  }
+}
+
+@media screen and (min-width: 1720px) {
+  .portrait {
+    width: 80vh;
+    left: 30vw;
+  }
+}
+</style>
