@@ -47,6 +47,8 @@
   display: block;
   position: relative;
 
+  -webkit-text-stroke: 2px #1a2f42;
+
   color: #4271a0;
   font-size: 5rem;
 }
@@ -54,6 +56,8 @@
 .title-container > h2 {
   display: block;
   position: relative;
+
+  -webkit-text-stroke: 1px #1a2f42;
 
   color: #4271a0;
   font-size: 1.5rem;
@@ -65,7 +69,9 @@
 
   color: #4271a0;
 
-  font-size: 3rem;
+  -webkit-text-stroke: 2px #1a2f42;
+
+  font-size: 3.25rem;
   margin-top: 2rem;
 }
 
@@ -97,6 +103,13 @@
   background-image: linear-gradient(#04b0ca, #0077be, #04b0ca);
 }
 
+@media screen and (max-width: 992px) {
+  .portrait {
+    width: 60vh;
+    left: 5vw;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .portrait {
     width: 60vh;
@@ -114,7 +127,6 @@
 @media screen and (min-width: 1400px) {
   .portrait {
     width: 70vh;
-
     left: 25vw;
   }
 }
