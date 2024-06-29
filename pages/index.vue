@@ -106,7 +106,7 @@
 @media screen and (max-width: 992px) {
   .portrait {
     width: 60vh;
-    left: 5vw;
+    left: 0vw;
   }
 }
 
@@ -114,6 +114,31 @@
   .portrait {
     width: 60vh;
     left: 10vw;
+  }
+
+  .title-container {
+    top: unset;
+    left: unset;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .title-container > h1 {
+    font-size: 3rem;
+  }
+
+  .title-container > h2 {
+    font-size: 1.25rem;
+  }
+
+  .title-container > h3 {
+    font-size: 2rem;
+  }
+
+  .background-container {
+    width: 35vh;
+    height: 35vh;
   }
 }
 
