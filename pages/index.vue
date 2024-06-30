@@ -17,7 +17,9 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+
+
 .portrait {
   display: block;
   position: absolute;
@@ -25,6 +27,7 @@
   pointer-events: none;
   user-select: none;
 
+  max-width: 100%;
   width: 70vh;
 
   z-index: 10;
@@ -108,13 +111,6 @@
     width: 60vh;
     left: 0vw;
   }
-}
-
-@media screen and (min-width: 992px) {
-  .portrait {
-    width: 60vh;
-    left: 10vw;
-  }
 
   .title-container {
     top: unset;
@@ -139,6 +135,13 @@
   .background-container {
     width: 35vh;
     height: 35vh;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .portrait {
+    width: 60vh;
+    left: 10vw;
   }
 }
 
