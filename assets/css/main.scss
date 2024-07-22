@@ -1,5 +1,5 @@
-$breakpoints: (576px, 768px, 992px, 1200px, 1400px, 1720px);
-$breaksizes: (540px, 720px, 960px, 1140px, 1320px, 1640px);
+$breakpoints: (576px, 768px, 992px, 1200px, 1400px);
+$breaksizes: (540px, 720px, 960px, 1140px, 1320px);
 
 *,
 *::before,
@@ -50,4 +50,8 @@ html {
       max-width: $size;
     }
   }
+}
+
+h1, h2, h3, h4 {
+  color: #4271a0;
 }
