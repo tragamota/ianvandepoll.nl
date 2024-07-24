@@ -1,3 +1,6 @@
+@use 'fonts';
+@use 'text';
+
 $breakpoints: (576px, 768px, 992px, 1200px, 1400px);
 $breaksizes: (540px, 720px, 960px, 1140px, 1320px);
 
@@ -9,9 +12,9 @@ $breaksizes: (540px, 720px, 960px, 1140px, 1320px);
 }
 
 html {
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 450;
   box-sizing: border-box;
 
   word-spacing: 1px;
@@ -52,6 +55,3 @@ html {
   }
 }
 
-h1, h2, h3, h4 {
-  color: #4271a0;
-}

@@ -169,7 +169,7 @@ export default defineComponent({
   position: relative;
   height: 100%;
   margin-left: 5rem;
-  margin-right: 2rem;
+  margin-right: 1.25rem;
   padding: 1.25rem 2.5rem;
   text-decoration: none;
   text-wrap: nowrap;
@@ -221,14 +221,14 @@ export default defineComponent({
 .header-route {
   display: inline-block;
   position: relative;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
 }
 
 .header-route > a {
   color: #7393b3;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 .header-route:last-child {
@@ -254,7 +254,7 @@ export default defineComponent({
   display: inline-block;
   height: 40%;
   border-left: 2px solid #7393b39c;
-  margin: 0 1rem 0 1rem;
+  margin: 0 0.7rem 0 0.7rem;
 }
 
 .header-mobile-content {

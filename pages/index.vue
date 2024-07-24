@@ -18,8 +18,6 @@
 </template>
 
 <style scoped lang="scss">
-
-
 .portrait {
   display: block;
   position: absolute;
@@ -40,8 +38,8 @@
   display: block;
   position: absolute;
 
-  top: 10vh;
-  left: 10vh;
+  top: 8vh;
+  left: 5vh;
 
   z-index: 100;
 }
@@ -60,10 +58,10 @@
   display: block;
   position: relative;
 
-  -webkit-text-stroke: 1px #1a2f42;
+  -webkit-text-stroke: 2px #1a2f42;
 
   color: #4271a0;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .title-container > h3 {
