@@ -7,9 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,6 +26,5 @@ jobs:
       with: 
         context: .
         push: true
-        tags: | 
-          ghcr.io/${{ github.repository }}:latest
+        tags: {{ github.repository }}:latest
         
