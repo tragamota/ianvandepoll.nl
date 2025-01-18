@@ -26,11 +26,11 @@
 
       <h2>Academic Background</h2>
       <p>
-        I hold a Bachelor’s degree from Avans University of Applied Sciences,
-        which provided me with a solid foundation in software development.
-        Currently, I am pursuing a Master’s in Artificial Intelligence at
-        Utrecht University, with a focus on Autonomous Systems and Decision
-        Making using (Deep) Reinforcement Learning.
+        I hold a Bachelor’s degree in Computer Science from Avans University of
+        Applied Sciences, which provided me with a solid foundation in software
+        development. Currently, I am pursuing a Master’s in Artificial
+        Intelligence at Utrecht University, with a focus on Autonomous Systems
+        and Decision Making using (Deep) Reinforcement Learning.
       </p>
 
       <h2>Professional Experience</h2>
@@ -101,18 +101,21 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useHead({
+  title: "Ian van de Poll - About me",
+  meta: [{ name: "description", content: "Information about me." }],
+});
+</script>
+
 <style lang="scss">
 .about > p {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .about > ul {
   list-style: lower-latin;
 
   margin-bottom: 1rem;
-}
-
-.about > li {
-
 }
 </style>

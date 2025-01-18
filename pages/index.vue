@@ -17,6 +17,13 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useHead({
+  title: "Ian van de Poll",
+  meta: [{ name: "description", content: "Home page of Ian van de Poll" }],
+});
+</script>
+
 <style scoped lang="scss">
 .portrait {
   display: block;
