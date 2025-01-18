@@ -14,7 +14,8 @@ WORKDIR /app
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/.output .output
 
-RUN npm ci --only=production
+RUN npm install
+RUN npm prune --production
 
 EXPOSE 3000
 
