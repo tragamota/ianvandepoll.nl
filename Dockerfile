@@ -3,7 +3,7 @@ FROM node:24-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
-RUN yarn install --frozen-lockfile --production=false
+RUN yarn install --production=false
 COPY . .
 RUN yarn run build
 
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/.output .output
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn install --production
 RUN npm prune --production
 
 USER node
