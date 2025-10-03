@@ -1,5 +1,8 @@
 <template>
   <Hero :scroll-y="scrollY"/>
+  <About />
+  <Education />
+  <Experience />
 </template>
 
 <script setup lang="ts">

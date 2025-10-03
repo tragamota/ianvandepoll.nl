@@ -2,7 +2,7 @@
 @use 'text';
 
 $breakpoints: (576px, 768px, 992px, 1200px, 1400px);
-$breaksizes: (540px, 720px, 960px, 1140px, 1320px);
+$breaksizes: (540px, 720px, 960px, 1140px, 1220px);
 
 *,
 *::before,
@@ -28,7 +28,7 @@ html {
 .layout {
   display: grid;
   grid-template-rows: auto 1fr;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .content-container {

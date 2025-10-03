@@ -1,11 +1,11 @@
 <template>
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-text">
       <h1>Ian van de Poll</h1>
       <h2>Software & ML Engineer</h2>
       <p>Building robust AI systems, adversarial detection, and scalable backend solutions.</p>
       <div class="hero-actions">
-        <NuxtLink to="#portfolio" class="btn">Portfolio</NuxtLink>
+        <NuxtLink to="#about" class="btn">Portfolio</NuxtLink>
         <NuxtLink to="#cv" class="btn secondary">CV</NuxtLink>
       </div>
     </div>
@@ -29,7 +29,7 @@ const props = defineProps<{
 }>();
 
 const transformStyle = computed(() => ({
-  transform: `translateY(${props.scrollY * 4}px)`
+  transform: `translateY(${props.scrollY * 0.8}px)`
 }));
 </script>
 
@@ -127,8 +127,8 @@ const transformStyle = computed(() => ({
   .hero {
     flex-direction: column;
     align-items: center;
-    height: unset;
-    padding: 4rem 1.5rem 0rem 1.5rem;
+    height: fit-content;
+    padding: 4rem 1rem 0rem 1rem;
     text-align: center;
 
     .hero-text {
