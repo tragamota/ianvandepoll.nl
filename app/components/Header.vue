@@ -7,13 +7,13 @@
           src="~/assets/images/menu-icon.svg"
           class="header-menu-icon"
           alt="Menu icon"
-        />
+        >
         <img
           v-else
           src="~/assets/images/close-icon.svg"
           class="header-menu-icon"
           alt="Close icon"
-        />
+        >
       </div>
 
       <NuxtLink to="/" class="header-logo">
@@ -36,7 +36,7 @@
           </li>
         </ul>
 
-        <div class="header-divider"></div>
+        <div class="header-divider"/>
 
         <ul class="header-extras">
           <li class="header-route">
@@ -56,12 +56,12 @@
               <img
                 class="header-icon"
                 src="~/assets/images/linkedin-icon.png"
-              />
+              >
             </a>
           </li>
           <li class="header-route">
             <a href="https://github.com/tragamota" target="_blank">
-              <img class="header-icon" src="~/assets/images/github-icon.svg" />
+              <img class="header-icon" src="~/assets/images/github-icon.svg" >
             </a>
           </li>
         </ul>
@@ -87,7 +87,7 @@
         </li>
       </ul>
 
-      <div class="header-mobile-divider"></div>
+      <div class="header-mobile-divider"/>
 
       <ul class="header-mobile-extras">
         <li class="header-mobile-route">
@@ -101,22 +101,16 @@
   </header>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  name: "Header",
-  setup() {
-    const menuOpen = ref(false);
+<script setup lang="ts">
+defineOptions({
+  name: "HeaderComponent"
+})
 
-    const toggleMenu = () => {
-      menuOpen.value = !menuOpen.value;
-    };
+const menuOpen = ref(false)
 
-    return {
-      menuOpen,
-      toggleMenu,
-    };
-  },
-});
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value
+}
 </script>
 
 <style scoped lang="scss">

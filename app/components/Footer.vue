@@ -6,6 +6,12 @@
   </footer>
 </template>
 
+<script setup lang="ts">
+defineOptions({
+  name: "FooterComponent"
+})
+</script>
+
 <style scoped>
 .footer {
   display: block;
