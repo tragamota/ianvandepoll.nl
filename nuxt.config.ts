@@ -1,10 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-
   components: true,
-  css: ["~/assets/css/main.scss"],
+  devtools: { enabled: true },
 
   modules: [
     '@nuxt/content',
@@ -12,5 +10,19 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image'
-  ]
+  ],
+
+  css: ["~/assets/css/main.scss"],
+
+  fonts: {
+    families: [
+      {
+        name: 'Roboto',
+        provider: 'google',
+        weights: [100, 300, 400, 500, 700, 900],
+        styles: ['normal'],
+        display: 'swap'
+      }
+    ]
+  }
 })
