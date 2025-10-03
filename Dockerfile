@@ -3,9 +3,9 @@ FROM node:24-bullseye-slim AS build
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 
-RUN yarn install --frozen-lockfile --non-interactive
+RUN yarn install --non-interactive
 
 COPY . .
 
