@@ -1,5 +1,5 @@
 # ---- Base build stage ----
-FROM node:24-bullseye-slim AS build
+FROM node:24-slim AS build
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY . .
 
 RUN yarn build
 
-FROM node:24-bullseye-slim AS production
+FROM node:24-slim AS production
 
 ENV NODE_ENV=production
 
