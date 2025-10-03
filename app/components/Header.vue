@@ -2,18 +2,20 @@
   <header class="header">
     <div class="header-container">
       <div class="header-menu" @click="toggleMenu">
-        <img
-          v-if="!menuOpen"
-          src="~/assets/images/menu-icon.svg"
-          class="header-menu-icon"
-          alt="Menu icon"
-        >
-        <img
-          v-else
-          src="~/assets/images/close-icon.svg"
-          class="header-menu-icon"
-          alt="Close icon"
-        >
+        <Transition name="fade" mode="out-in">
+          <img
+            v-if="!menuOpen"
+            src="~/assets/images/menu-icon.svg"
+            class="header-menu-icon"
+            alt="Menu icon"
+          >
+          <img
+            v-else
+            src="~/assets/images/close-icon.svg"
+            class="header-menu-icon"
+            alt="Close icon"
+          >
+        </Transition>
       </div>
 
       <NuxtLink to="/" class="header-logo">
@@ -36,7 +38,7 @@
           </li>
         </ul>
 
-        <div class="header-divider"/>
+        <div class="header-divider" />
 
         <ul class="header-extras">
           <li class="header-route">
@@ -87,7 +89,7 @@
         </li>
       </ul>
 
-      <div class="header-mobile-divider"/>
+      <div class="header-mobile-divider" />
 
       <ul class="header-mobile-extras">
         <li class="header-mobile-route">
@@ -103,14 +105,14 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: "HeaderComponent"
-})
+  name: "HeaderComponent",
+});
 
-const menuOpen = ref(false)
+const menuOpen = ref(false);
 
 const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value
-}
+  menuOpen.value = !menuOpen.value;
+};
 </script>
 
 <style scoped lang="scss">
@@ -135,7 +137,8 @@ const toggleMenu = () => {
 }
 
 .header-menu {
-  display: none;
+  display: block;
+  visibility: hidden;
   position: relative;
   margin-left: 1rem;
   cursor: pointer;
@@ -144,12 +147,16 @@ const toggleMenu = () => {
 .header-menu-icon {
   width: 38px;
   height: 38px;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 }
 
 .header-menu-icon-enter-active,
 .header-menu-icon-leave-active {
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 }
 
 .header-menu-icon-enter,
@@ -162,7 +169,7 @@ const toggleMenu = () => {
   display: block;
   position: relative;
   height: 100%;
-  margin-left: 5rem;
+  margin-left: 1rem;
   margin-right: 1.25rem;
   padding: 1.25rem 2.5rem;
   text-decoration: none;
@@ -258,17 +265,27 @@ const toggleMenu = () => {
   padding-right: 0;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
 .header-mobile-route {
-  @extend .header-route
+  @extend .header-route;
 }
 
 .header-mobile-extras {
-  @extend .header-extras
+  @extend .header-extras;
 }
 
 @media screen and (max-width: 768px) {
   .header-menu {
-    display: block;
+    visibility: visible;
   }
 
   .header-divider {
@@ -296,7 +313,7 @@ const toggleMenu = () => {
 
 @media screen and (max-width: 1200px) {
   .header-menu {
-    display: block;
+    visibility: visible;
   }
 
   .header-mobile-route {
