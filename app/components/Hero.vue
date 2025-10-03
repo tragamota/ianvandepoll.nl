@@ -29,7 +29,7 @@ const props = defineProps<{
 }>();
 
 const transformStyle = computed(() => ({
-  transform: `translateY(${props.scrollY * 0.8}px)`
+  transform: `translateY(${props.scrollY * 4}px)`
 }));
 </script>
 
@@ -127,7 +127,7 @@ const transformStyle = computed(() => ({
   .hero {
     flex-direction: column;
     align-items: center;
-    height: 90vh;
+    height: unset;
     padding: 4rem 1.5rem 0rem 1.5rem;
     text-align: center;
 
