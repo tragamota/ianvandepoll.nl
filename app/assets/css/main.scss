@@ -1,8 +1,9 @@
 @use "sass:list";
 @use 'text';
+@use 'form';
+@use 'button';
 
-$breakpoints: (576px, 768px, 992px, 1200px, 1400px);
-$breaksizes: (540px, 720px, 960px, 1140px, 1220px);
+@import 'variables';
 
 *,
 *::before,
@@ -19,10 +20,16 @@ html {
 
   word-spacing: 1px;
 
+  scroll-behavior: smooth;
+
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: $color-bg-light;
 }
 
 .layout {
