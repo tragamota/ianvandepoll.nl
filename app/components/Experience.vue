@@ -1,11 +1,11 @@
 <template>
-    <div class="content-container">
-        <h1>Experience</h1>
-    </div>
+  <section id="experience" class="content-container">
+    <h1>Experience</h1>
+  </section>
 </template>
 
 <script setup lang="ts">
 defineOptions({
-  name: "ExperienceComponent"
-})
+  name: "ExperienceComponent",
+});
 </script>

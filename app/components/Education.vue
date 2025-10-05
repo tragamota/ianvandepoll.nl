@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container">
+  <section id="education" class="content-container">
     <h1>Education</h1>
 
     <div class="education-header">
@@ -44,7 +44,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
