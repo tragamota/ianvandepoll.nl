@@ -28,13 +28,13 @@
             <NuxtLink to="/">Home</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="/about">About me</NuxtLink>
+            <NuxtLink to="#about">About me</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="/education">Education</NuxtLink>
+            <NuxtLink to="#education">Education</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="/experience">Experience</NuxtLink>
+            <NuxtLink to="#experience">Experience</NuxtLink>
           </li>
         </ul>
 
@@ -79,13 +79,13 @@
           <NuxtLink to="/">Home</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="/about">About me</NuxtLink>
+          <NuxtLink to="#about">About me</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="/education">Education</NuxtLink>
+          <NuxtLink to="#education">Education</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="/experience">Experience</NuxtLink>
+          <NuxtLink to="#experience">Experience</NuxtLink>
         </li>
       </ul>
 
@@ -116,13 +116,15 @@ const toggleMenu = () => {
 </script>
 
 <style scoped lang="scss">
+@import '~/assets/css/variables';
+
 .header {
   display: block;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: $color-bg-light; // light section background
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
 }
@@ -147,22 +149,6 @@ const toggleMenu = () => {
 .header-menu-icon {
   width: 38px;
   height: 38px;
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
-}
-
-.header-menu-icon-enter-active,
-.header-menu-icon-leave-active {
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
-}
-
-.header-menu-icon-enter,
-.header-menu-icon-leave-to {
-  transform: rotate(90deg);
-  opacity: 0;
 }
 
 .header-logo {
@@ -174,14 +160,14 @@ const toggleMenu = () => {
   padding: 1.25rem 2.5rem;
   text-decoration: none;
   text-wrap: nowrap;
-  background: #7393b3;
+  background: $color-primary; // primary blue
 }
 
 .header-logo > span {
   text-transform: uppercase;
   font-size: 20pt;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
 }
 
 .header-content {
@@ -195,25 +181,16 @@ const toggleMenu = () => {
   align-items: center;
 }
 
-.header-routes {
-  display: block;
-  position: relative;
-  padding: 0 0.5rem;
+.header-routes,
+.header-extras,
+.header-socials {
+  list-style: none;
   margin: 0;
-  list-style: none;
-}
-
-.header-extras {
-  display: block;
-  position: relative;
   padding: 0 0.5rem;
-  margin: 0 1rem 0 0;
-  list-style: none;
 }
 
 .header-socials {
   display: flex;
-  position: relative;
   height: 100%;
   align-items: center;
   padding-left: 1rem;
@@ -223,27 +200,25 @@ const toggleMenu = () => {
   display: inline-block;
   position: relative;
   margin-right: 0.7rem;
-}
 
-.header-route > a {
-  color: #7393b3;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-}
+  > a {
+    color: $color-primary; // primary blue for links
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.25rem;
+    transition: color 0.3s;
 
-.header-route:last-child {
-  margin-right: 0;
-}
+    &:hover {
+      color: $color-secondary; // energetic accent for hover
+      text-decoration: underline;
+    }
 
-.header-route > a:active {
-  color: #627d97;
-  text-decoration: underline;
-}
-
-.header-route > a:hover {
-  color: #627d97;
-  text-decoration: underline;
+    &:active {
+      color: darken($color-secondary, 10%);
+      text-decoration: underline;
+    }
+  }
 }
 
 .header-icon {
@@ -254,8 +229,8 @@ const toggleMenu = () => {
 .header-divider {
   display: inline-block;
   height: 40%;
-  border-left: 2px solid #7393b39c;
-  margin: 0 0.7rem 0 0.7rem;
+  border-left: 2px solid rgba($color-primary, 0.6); // subtle primary tone
+  margin: 0 0.7rem;
 }
 
 .header-mobile-content {
@@ -263,6 +238,10 @@ const toggleMenu = () => {
   flex-direction: column;
   padding-left: 0;
   padding-right: 0;
+
+  &.header-mobile-content-open {
+    display: flex;
+  }
 }
 
 .fade-enter-active,
@@ -277,81 +256,29 @@ const toggleMenu = () => {
 
 .header-mobile-route {
   @extend .header-route;
+  display: block;
+  text-align: center;
+  margin-right: 0;
+  margin-bottom: 1rem;
+
+  &:first-child { margin-top: 1rem; }
+  &:last-child { margin-bottom: 0; }
 }
 
-.header-mobile-extras {
-  @extend .header-extras;
+.header-mobile-divider {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
-  .header-menu {
-    visibility: visible;
-  }
-
-  .header-divider {
-    display: none;
-  }
-
-  .header-routes {
-    display: none;
-  }
-
-  .header-extras {
-    display: none;
-  }
-
-  .header-logo {
-    margin-left: 1rem;
-    margin-right: 0;
-    padding: 1.25rem 1.5rem;
-  }
-
-  .header-mobile-content-open {
-    display: block;
-  }
+  .header-menu { visibility: visible; }
+  .header-divider { display: none; }
+  .header-routes, .header-extras { display: none; }
+  .header-logo { margin-left: 1rem; padding: 1.25rem 1.5rem; }
 }
 
 @media screen and (max-width: 1200px) {
-  .header-menu {
-    visibility: visible;
-  }
-
-  .header-mobile-route {
-    display: block;
-
-    text-align: center;
-
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .header-mobile-route:first-child {
-    margin-top: 1rem;
-  }
-
-  .header-mobile-route:last-child {
-    margin-bottom: 0;
-  }
-
-  .header-mobile-divider {
-    display: none;
-  }
-
-  .header-divider {
-    display: none;
-  }
-
-  .header-routes {
-    display: none;
-  }
-
-  .header-logo {
-    margin-left: 1rem;
-    padding: 1.25rem 1.5rem;
-  }
-
-  .header-mobile-content-open {
-    display: block;
-  }
+  .header-menu { visibility: visible; }
+  .header-mobile-content-open { display: flex; }
 }
+
 </style>
