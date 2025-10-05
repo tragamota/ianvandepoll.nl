@@ -18,22 +18,45 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 
 defineOptions({
   name: "HeroComponent"
-})
+});
 
 const props = defineProps<{
-  scrollY: number
+  scrollY: number;
 }>();
 
+const parallaxY = ref(0);
+let currentY = 0;
+let rafId: number;
+
+const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
+
+const update = () => {
+  currentY = lerp(currentY, props.scrollY * 0.25, 0.02);
+  parallaxY.value = currentY;
+  rafId = requestAnimationFrame(update);
+};
+
+onMounted(() => {
+  rafId = requestAnimationFrame(update);
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(rafId);
+});
+
 const transformStyle = computed(() => ({
-  transform: `translateY(${props.scrollY * 0.8}px)`
+  transform: `translateY(${parallaxY.value}px)`,
+  transition: "transform 0.1s ease-out",
 }));
 </script>
 
 <style scoped lang="scss">
+@import '~/assets/css/variables';
+
 .hero {
   position: relative;
   height: 60vh;
@@ -49,20 +72,20 @@ const transformStyle = computed(() => ({
 
     h1 {
       font-size: 5rem;
-      color: #4271a0;
-      font-weight: bold;
+      color: $color-primary;
+      font-weight: 700;
     }
 
     h2 {
       font-size: 2rem;
-      color: #4271a0;
+      color: $color-primary;
       margin: 1rem 0;
     }
 
     p {
       font-size: 1.25rem;
       margin-bottom: 2rem;
-      color: #1a2f42;
+      color: $color-text;
     }
 
     .hero-actions {
@@ -78,21 +101,21 @@ const transformStyle = computed(() => ({
 
         &.secondary {
           background: transparent;
-          border: 2px solid #4271a0;
-          color: #4271a0;
+          border: 2px solid $color-primary;
+          color: $color-primary;
 
           &:hover {
-            background: #4271a0;
-            color: white;
+            background: $color-primary;
+            color: #fff;
           }
         }
 
         &:not(.secondary) {
-          background: #04b0ca;
-          color: white;
+          background: $color-secondary;
+          color: #fff;
 
           &:hover {
-            background: #0077be;
+            background: darken($color-secondary, 7%);
           }
         }
       }
@@ -103,6 +126,7 @@ const transformStyle = computed(() => ({
     display: flex;
     align-self: flex-end;
     max-height: 55vh;
+    will-change: transform;
 
     img {
       width: 55vh;
@@ -114,11 +138,16 @@ const transformStyle = computed(() => ({
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 85%;
-      height: 85%;
-      background: linear-gradient(120deg, #04b0ca, #0077be, #04b0ca);
+      width: 90%;
+      height: 90%;
+      background: linear-gradient(
+        120deg,
+        $color-hero-gradient-start,
+        $color-hero-gradient-middle,
+        $color-hero-gradient-end
+      );
       filter: blur(120px);
-      z-index: -1
+      z-index: -1;
     }
   }
 }
@@ -132,17 +161,20 @@ const transformStyle = computed(() => ({
     text-align: center;
 
     .hero-text {
-      max-height: 50%;
       max-width: 100%;
+
       h1 {
         font-size: 3rem;
       }
+
       h2 {
         font-size: 1.5rem;
       }
+
       p {
         font-size: 1rem;
       }
+
       .hero-actions {
         justify-content: center;
       }
@@ -150,16 +182,13 @@ const transformStyle = computed(() => ({
 
     .hero-image {
       position: relative;
-      max-height: 65%;
       max-width: 100%;
-
-      align-self: unset;
-      align-items: flex-end;
       margin-top: 2rem;
+      align-items: flex-end;
 
       img {
         width: 100%;
-        height: 100%;
+        height: auto;
       }
     }
   }
