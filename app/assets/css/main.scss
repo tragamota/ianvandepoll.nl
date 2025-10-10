@@ -1,9 +1,9 @@
 @use "sass:list";
-@use 'text';
-@use 'form';
-@use 'button';
+@use "text";
+@use "form";
+@use "button";
 
-@import 'variables';
+@import "variables";
 
 *,
 *::before,
@@ -38,27 +38,23 @@ body {
   min-height: 100vh;
 }
 
-.content-container {
-  display: block;
+.section {
+  display: flex;
   position: relative;
+
+  justify-content: center;
+  padding: 4rem 12vw;
+}
+
+.section-container {
+  display: block;
 
   width: 100%;
   height: 100%;
-
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  margin-right: auto;
-  margin-left: auto;
 }
 
-@for $i from 1 through list.length($breakpoints) {
-  $breakpoint: list.nth($breakpoints, $i);
-  $size: list.nth($breaksizes, $i);
-
-  @media screen and (min-width: $breakpoint) {
-    .content-container {
-      max-width: $size;
-    }
+@media screen and (max-width: 1240px) {
+  .section {
+    padding: 4rem 1.5rem;
   }
 }
-

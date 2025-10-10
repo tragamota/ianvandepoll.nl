@@ -49,16 +49,22 @@ const skills = [
 </script>
 
 <style scoped lang="scss">
+@use 'sass:color';
+
+@use "~/assets/css/main.scss";
+@import "~/assets/css/variables.scss";
+
 .about-section {
-  background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
-  padding: 6rem 8vw;
-  color: #1a2f42;
+  @extend .section;
+  
+  // background: linear-gradient(180deg, $color-primary 0%, $color-bg-light 10%);
 
   .about-container {
+    @extend .section-container;
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
     justify-content: space-between;
+    gap: 3rem;
   }
 
   .about-text {
@@ -124,8 +130,7 @@ const skills = [
     }
   }
 
-  @media screen and (max-width: 992px) {
-    padding: 4rem 1.5rem;
+  @media screen and (max-width: 1240px) {
     .about-container {
       flex-direction: column;
       align-items: center;

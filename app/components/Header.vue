@@ -280,5 +280,4 @@ const toggleMenu = () => {
   .header-menu { visibility: visible; }
   .header-mobile-content-open { display: flex; }
 }
-
 </style>

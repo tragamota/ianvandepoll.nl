@@ -3,7 +3,10 @@
     <div class="hero-text">
       <h1>Ian van de Poll</h1>
       <h2>Software & ML Engineer</h2>
-      <p>Building robust AI systems, adversarial detection, and scalable backend solutions.</p>
+      <p>
+        Building robust AI systems, adversarial detection, and scalable backend
+        solutions.
+      </p>
       <div class="hero-actions">
         <NuxtLink to="#about" class="btn">Portfolio</NuxtLink>
         <NuxtLink to="#cv" class="btn secondary">CV</NuxtLink>
@@ -11,17 +14,20 @@
     </div>
 
     <div class="hero-image" :style="transformStyle">
-      <img src="~/assets/images/portrait-min.png" alt="Portrait of Ian van de Poll" >
+      <img
+        src="~/assets/images/portrait-min.png"
+        alt="Portrait of Ian van de Poll"
+      >
       <div class="background-gradient" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, computed, onUnmounted, watch } from "vue";
 
 defineOptions({
-  name: "HeroComponent"
+  name: "HeroComponent",
 });
 
 const props = defineProps<{
@@ -29,41 +35,61 @@ const props = defineProps<{
 }>();
 
 const parallaxY = ref(0);
+
 let currentY = 0;
-let rafId: number;
+let rafId: number | null = null;
+
+const tolerance = 1;
+const maxTranslate = 240;
+const easeFactor = 0.02;
 
 const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
 
 const update = () => {
-  currentY = lerp(currentY, props.scrollY * 0.25, 0.02);
+  const target = Math.min(props.scrollY * 0.6, maxTranslate);
+  currentY = lerp(currentY, target, easeFactor);
+
+  if (Math.abs(target - currentY) < tolerance) {
+    currentY = target;
+    parallaxY.value = currentY;
+    rafId = null;
+    return;
+  }
+
   parallaxY.value = currentY;
   rafId = requestAnimationFrame(update);
 };
 
-onMounted(() => {
-  rafId = requestAnimationFrame(update);
-});
+watch(
+  () => props.scrollY,
+  () => {
+    if (!rafId) 
+      rafId = requestAnimationFrame(update);
+  }
+);
 
 onUnmounted(() => {
-  cancelAnimationFrame(rafId);
+  if (rafId) 
+    cancelAnimationFrame(rafId);
 });
 
 const transformStyle = computed(() => ({
   transform: `translateY(${parallaxY.value}px)`,
-  transition: "transform 0.1s ease-out",
+  willChange: "transform",
 }));
 </script>
 
 <style scoped lang="scss">
-@import '~/assets/css/variables';
+@import "~/assets/css/variables";
 
 .hero {
+  display: flex;
   position: relative;
   height: 60vh;
-  display: flex;
+
   align-items: center;
   justify-content: space-between;
-  padding: 0 5vw;
+  padding: 0 12vw;
   overflow: hidden;
 
   .hero-text {
@@ -152,7 +178,7 @@ const transformStyle = computed(() => ({
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1240px) {
   .hero {
     flex-direction: column;
     align-items: center;
