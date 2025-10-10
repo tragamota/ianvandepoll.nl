@@ -126,7 +126,6 @@ defineOptions({
       opacity: 1;
     }
 
-    /* --- Logo --- */
     .education-image {
       flex: 0 0 220px;
       display: flex;

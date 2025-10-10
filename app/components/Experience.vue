@@ -1,6 +1,8 @@
 <template>
-  <section id="experience" class="content-container">
-    <h1>Experience</h1>
+  <section id="experience" class="section">
+    <div class="section-container">
+      <h1>Experience</h1>
+    </div>
   </section>
 </template>
 
