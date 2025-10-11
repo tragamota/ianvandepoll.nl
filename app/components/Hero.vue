@@ -9,15 +9,25 @@
       </p>
       <div class="hero-actions">
         <NuxtLink to="#about" class="btn">Portfolio</NuxtLink>
-        <a href="cv.pdf" download="Curriculum vitea - Ian van de Poll.pdf" class="btn secondary">CV</a>
+        <a
+          href="cv.pdf"
+          download="Curriculum vitea - Ian van de Poll.pdf"
+          class="btn secondary"
+          >CV</a
+        >
       </div>
     </div>
 
     <div class="hero-image" :style="transformStyle">
-      <img
-        src="~/assets/images/portrait-min.png"
-        alt="Portrait of Ian van de Poll"
-      >
+      <picture>
+        <source srcset="~/assets/images/portrait-min.webp" type="image/webp" />
+        <source srcset="~/assets/images/portrait-min.png" type="image/png" />
+        <img
+          src="~/assets/images/portrait-min.png"
+          alt="Portrait of Ian van de Poll"
+          loading="lazy"
+        >
+      </picture>
       <div class="background-gradient" />
     </div>
   </section>
@@ -43,7 +53,8 @@ const tolerance = 1;
 const maxTranslate = 240;
 const easeFactor = 0.02;
 
-const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
+const lerp = (start: number, end: number, t: number) =>
+  start + (end - start) * t;
 
 const update = () => {
   const target = Math.min(props.scrollY * 0.6, maxTranslate);
@@ -63,14 +74,12 @@ const update = () => {
 watch(
   () => props.scrollY,
   () => {
-    if (!rafId) 
-      rafId = requestAnimationFrame(update);
+    if (!rafId) rafId = requestAnimationFrame(update);
   }
 );
 
 onUnmounted(() => {
-  if (rafId) 
-    cancelAnimationFrame(rafId);
+  if (rafId) cancelAnimationFrame(rafId);
 });
 
 const transformStyle = computed(() => ({
