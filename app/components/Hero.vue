@@ -9,7 +9,7 @@
       </p>
       <div class="hero-actions">
         <NuxtLink to="#about" class="btn">Portfolio</NuxtLink>
-        <NuxtLink to="#cv" class="btn secondary">CV</NuxtLink>
+        <a href="cv.pdf" download="Curriculum vitea - Ian van de Poll.pdf" class="btn secondary">CV</a>
       </div>
     </div>
 

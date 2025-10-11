@@ -28,13 +28,13 @@
             <NuxtLink to="/">Home</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="#about">About me</NuxtLink>
+            <NuxtLink to="/#about">About me</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="#education">Education</NuxtLink>
+            <NuxtLink to="/#education">Education</NuxtLink>
           </li>
           <li class="header-route">
-            <NuxtLink to="#experience">Experience</NuxtLink>
+            <NuxtLink to="/#experience">Experience</NuxtLink>
           </li>
         </ul>
 
@@ -79,13 +79,13 @@
           <NuxtLink to="/">Home</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="#about">About me</NuxtLink>
+          <NuxtLink to="/#about">About me</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="#education">Education</NuxtLink>
+          <NuxtLink to="/#education">Education</NuxtLink>
         </li>
         <li class="header-mobile-route">
-          <NuxtLink to="#experience">Experience</NuxtLink>
+          <NuxtLink to="/#experience">Experience</NuxtLink>
         </li>
       </ul>
 

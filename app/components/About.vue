@@ -71,7 +71,7 @@ const skills = [
     flex: 1 1 55%;
 
     h1 {
-      color: #7393b3;
+      // color: #7393b3;
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }

@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-      <p>Copyright 2024 © - Ian van de Poll</p>
+      <p>Copyright 2025 © - Ian van de Poll</p>
     </div>
   </footer>
 </template>
@@ -12,7 +12,9 @@ defineOptions({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '~/assets/css/variables.scss';
+
 .footer {
   display: block;
   position: relative;
@@ -20,7 +22,7 @@ defineOptions({
   height: 3rem;
 
   box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.15);
-  background: #8bb2d9;
+  background: $color-primary;
 
   z-index: 1000;
 }
