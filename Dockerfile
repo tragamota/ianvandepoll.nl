@@ -1,28 +1,36 @@
-# ---- Base build stage ----
+# ---------- BUILD STAGE ----------
 FROM node:24-slim AS build
 
 WORKDIR /app
 
-COPY package.json ./
+# Copy dependency files first for better caching
+COPY package.json package-lock.json ./
 
-RUN yarn install --non-interactive
+# Install all dependencies
+RUN npm ci
 
+# Copy the rest of the source code
 COPY . .
 
-RUN yarn build
+# Build the Nuxt project
+RUN npm run build
 
+
+# ---------- PRODUCTION STAGE ----------
 FROM node:24-slim AS production
 
 ENV NODE_ENV=production
-
 WORKDIR /app
 
+# Copy only what’s needed for production
 COPY --from=build /app/.output ./.output
 COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/yarn.lock ./yarn.lock
+COPY --from=build /app/package-lock.json ./package-lock.json
 
-RUN yarn install --frozen-lockfile --non-interactive --production=true && yarn cache clean
+# Install only production dependencies
+RUN npm ci --omit=dev
 
+# Set correct ownership and permissions
 RUN chown -R node:node /app
 USER node
 
