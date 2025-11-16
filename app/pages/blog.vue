@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container">
+  <div class="section">
     <div>
       Coming soon! 
     </div>
