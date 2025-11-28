@@ -37,5 +37,9 @@ defineOptions({
   font-size: 0.85rem;
 
   align-items: center;
+
+  p {
+    color: $color-bg-light;
+  }
 }
 </style>
